@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: srealityDb
+      DB_USER: postgres
+      DB_PASSWORD: Michal33
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Michal33
+      POSTGRES_DB: srealityDb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
